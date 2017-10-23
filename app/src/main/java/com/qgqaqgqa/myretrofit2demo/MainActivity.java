@@ -36,13 +36,8 @@ public class MainActivity extends AppCompatActivity {
                         .addParam("password", "880808")//post 公共参数添加
 //                        .addQueryParam("api_version", "1.1")//get 公共参数添加
                         .build();
-
-//        CommonInterceptor commonInterceptor = new CommonInterceptor(
-//                "key", "Secret");
-
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(basicParamsInterceptor)
-//                .addInterceptor(commonInterceptor)
                 .build();
         //将client添加到retrofit里
         //******添加公共参数初始化结束******//

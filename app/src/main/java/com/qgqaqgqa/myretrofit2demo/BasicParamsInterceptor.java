@@ -170,26 +170,53 @@ public class BasicParamsInterceptor implements Interceptor {
             interceptor = new BasicParamsInterceptor();
         }
 
+        /**
+         * post 请求，且 body type 为 x-www-form-urlencoded 时，键值对公共参数插入到 body 参数中，其他情况插入到 url query 参数中。
+         * @param key
+         * @param value
+         * @return
+         */
         public Builder addParam(String key, String value) {
             interceptor.paramsMap.put(key, value);
             return this;
         }
 
+        /**
+         * 同上，不过这里用键值对 Map 作为参数批量插入。
+         * @param paramsMap
+         * @return
+         */
         public Builder addParamsMap(Map<String, String> paramsMap) {
             interceptor.paramsMap.putAll(paramsMap);
             return this;
         }
 
+        /**
+         * 在 header 中插入键值对参数。
+         * @param key
+         * @param value
+         * @return
+         */
         public Builder addHeaderParam(String key, String value) {
             interceptor.headerParamsMap.put(key, value);
             return this;
         }
 
+        /**
+         * 在 header 中插入键值对 Map 集合，批量插入。
+         * @param headerParamsMap
+         * @return
+         */
         public Builder addHeaderParamsMap(Map<String, String> headerParamsMap) {
             interceptor.headerParamsMap.putAll(headerParamsMap);
             return this;
         }
 
+        /**
+         * 在 header 中插入 headerLine 字符串，字符串需要符合 -1 != headerLine.indexOf(“:”) 的规则，即可以解析成键值对。
+         * @param headerLine
+         * @return
+         */
         public Builder addHeaderLine(String headerLine) {
             int index = headerLine.indexOf(":");
             if (index == -1) {
@@ -199,6 +226,11 @@ public class BasicParamsInterceptor implements Interceptor {
             return this;
         }
 
+        /**
+         * 同上，headerLineList: List 为参数，批量插入 headerLine。
+         * @param headerLinesList
+         * @return
+         */
         public Builder addHeaderLinesList(List<String> headerLinesList) {
             for (String headerLine: headerLinesList) {
                 int index = headerLine.indexOf(":");
@@ -210,11 +242,22 @@ public class BasicParamsInterceptor implements Interceptor {
             return this;
         }
 
+        /**
+         * 插入键值对参数到 url query 中。
+         * @param key
+         * @param value
+         * @return
+         */
         public Builder addQueryParam(String key, String value) {
             interceptor.queryParamsMap.put(key, value);
             return this;
         }
 
+        /**
+         * 插入键值对参数 map 到 url query 中，批量插入。
+         * @param queryParamsMap
+         * @return
+         */
         public Builder addQueryParamsMap(Map<String, String> queryParamsMap) {
             interceptor.queryParamsMap.putAll(queryParamsMap);
             return this;
