@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
 //        Call<ResponseBody> call = loginService.login("311111","880808");
 
         Call<Result<UserModel>> call = loginService.login1("311111","880808");
-//        Call<Result<UserModel>> call = loginService.login2("311111","880808");
 // 用法和OkHttp的call如出一辙,
 // 不同的是如果是Android系统回调方法执行在主线程
 //        call.enqueue(new Callback<ResponseBody>() {

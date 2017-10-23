@@ -22,6 +22,4 @@ public interface LoginService {
     @FormUrlEncoded
     @POST("user/login/")
     Call<Result<UserModel>> login1(@Field("username") String username,@Field("password") String password);
-    @POST("user/login/")
-    Call<Result<UserModel>> login2(@Query("username") String username,@Query("password") String password);
 }
